@@ -170,16 +170,16 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
     
       tasks:
         - name: Allow ports
-        shell: sudo firewall-cmd --permanent --add-port=5432/tcp
+          shell: sudo firewall-cmd --permanent --add-port=5432/tcp
 
         - name: Reload Firewall
-        shell: sudo firewall-cmd --reload
+          shell: sudo firewall-cmd --reload
 
         - name: Selinux
-        shell: sudo sed -i "s/SELINUX=.*/SELINUX=disabled/" /etc/selinux/config
+          shell: sudo sed -i "s/SELINUX=.*/SELINUX=disabled/" /etc/selinux/config
 
         - name: Reload Selinux
-        shell: sudo setenforce 0
+          shell: sudo setenforce 0
     ```
 ### 19. Run playbook.yaml 
 ```yaml
