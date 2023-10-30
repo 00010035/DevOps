@@ -129,22 +129,22 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
   - Add the playbook contents:
     ```yaml
     ---
-- name: Firewall
-  hosts: vm
-  become: yes
+    - name: Firewall
+      hosts: vm
+      become: yes
+    
+      tasks:
+        - name: Allow ports
+        shell: sudo firewall-cmd --permanent --add-port=5432/tcp
 
-  tasks:
-    - name: Allow ports
-      shell: sudo firewall-cmd --permanent --add-port=5432/tcp
+        - name: Reload Firewall
+        shell: sudo firewall-cmd --reload
 
-    - name: Reload Firewall
-      shell: sudo firewall-cmd --reload
+        - name: Selinux
+        shell: sudo sed -i "s/SELINUX=.*/SELINUX=disabled/" /etc/selinux/config
 
-    - name: Selinux
-      shell: sudo sed -i "s/SELINUX=.*/SELINUX=disabled/" /etc/selinux/config
-
-    - name: Reload Selinux
-      shell: sudo setenforce 0
+        - name: Reload Selinux
+        shell: sudo setenforce 0
     ```
 
 ### 14. Install PostgreSQL (Example)
@@ -155,30 +155,30 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
   - Add the playbook contents:
     ```yaml
     ---
-- name: Install PostgreSQL on CentOS
-  hosts: vm
-  become: yes
-  tasks:
-    - name: Install PostgreSQL and EPEL Repository
-      yum:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - epel-release
-        - postgresql-server
-        - postgresql-contrib
-      when: ansible_distribution == 'CentOS'
+    - name: Install PostgreSQL on CentOS
+      hosts: vm
+      become: yes
+      tasks:
+        - name: Install PostgreSQL and EPEL Repository
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - epel-release
+          - postgresql-server
+          - postgresql-contrib
+        when: ansible_distribution == 'CentOS'
 
-    - name: Initialize the PostgreSQL Database
-      command: postgresql-setup initdb
-      when: ansible_distribution == 'CentOS'
+      - name: Initialize the PostgreSQL Database
+        command: postgresql-setup initdb
+        when: ansible_distribution == 'CentOS'
 
-    - name: Start and Enable PostgreSQL Service
-      systemd:
-        name: postgresql
-        enabled: yes
-        state: started
-      when: ansible_distribution == 'CentOS'
+      - name: Start and Enable PostgreSQL Service
+        systemd:
+          name: postgresql
+          enabled: yes
+          state: started
+        when: ansible_distribution == 'CentOS'
     ```
 
 ### 15. Run Ansible Playbook
