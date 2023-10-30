@@ -1,4 +1,10 @@
-I understand your request for formatting. Here's the content with code blocks marked by triple backticks and other sections using bullet points as requested:
+
+
+ Markup : 1. A numbered list
+              1. A nested numbered list
+              2. Which is numbered
+          2. Which is numbered
+
 
 ```markdown
 Ubuntu Server
