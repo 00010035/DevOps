@@ -95,14 +95,48 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
 (Include the steps specific to configuring a CentOS server here.)
 
 (Once you've returned to the main server...)
+### 10. Set the Server's Hostname
 
-### 10. SSH Key Copy
+- Set the hostname to "ansible" or your preferred name:
+  ```shell
+  sudo hostnamectl set-hostname ansible
+  ```
+  
+### 11. Create the `ansible` User
+- Create the `ansible` user:
+  ```shell
+  sudo adduser ansible
+  ```
+
+### 12. Set a Password for the `ansible` User (if needed)
+- Set a password for the `ansible` user:
+  ```shell
+  sudo passwd ansible
+  ```
+
+### 13. Add the `ansible` User to the `wheel` Group
+- Grant the `ansible` user sudo access by adding it to the `wheel` group:
+  ```shell
+  sudo usermod -aG wheel ansible
+  ```
+
+### 14. Edit the Sudoers File
+- Edit the sudoers file:
+  ```shell
+  sudo visudo
+  ```
+  - Add the following line to grant the `ansible` user passwordless sudo access:
+    ```
+    ansible		ALL=(ALL)	NOPASSWD: ALL
+    ```
+## Return to ansible server (main server) 
+### 15. SSH Key Copy
 - Inside the `ansible@ansible` user, copy your SSH key to the remote server:
   ```shell
   ssh-copy-id ansible@172.31.102.110
   ```
 
-### 11. Create Ansible Inventory File
+### 16. Create Ansible Inventory File
 - Create an Ansible inventory file named `inventory.yaml`:
   ```shell
   vi inventory.yaml
@@ -115,13 +149,13 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
           ansible_host: 172.31.109.173
     ```
 
-### 12. Verify Inventory
+### 17. Verify Inventory
 - Verify that the server is in the inventory:
   ```shell
   ansible-inventory -i inventory.yaml --list
   ```
 
-### 13. Create a Playbook for Configuration
+### 18. Create a Playbook for Configuration
 - Create a playbook to configure the firewall, SELinux, and other settings:
   ```shell
   vi playbook.yaml
@@ -147,7 +181,7 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
         shell: sudo setenforce 0
     ```
 
-### 14. Install PostgreSQL (Example)
+### 19. Install PostgreSQL (Example)
 - Create a playbook to install PostgreSQL on CentOS:
   ```shell
   vi postgres.yaml
@@ -181,7 +215,7 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
         when: ansible_distribution == 'CentOS'
     ```
 
-### 15. Run Ansible Playbook
+### 20. Run Ansible Playbook
 - Run the PostgreSQL playbook (or other playbooks):
   ```shell
   ansible-playbook -i inventory.yaml postgres.yaml
