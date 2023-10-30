@@ -140,6 +140,8 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
 ### 16. Create Ansible Inventory File
 - Create an Ansible inventory file named `inventory.yaml`:
   ```shell
+  mkdir ansible
+  cd ansible
   vi inventory.yaml
   ```
   - Add server information:
