@@ -181,6 +181,10 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
         - name: Reload Selinux
         shell: sudo setenforce 0
     ```
+### 19. Run playbook.yaml 
+```yaml
+ansible-playbook -i inventory.yaml playbook.yaml
+```
 
 ### 19. Install PostgreSQL (Example)
 - Create a playbook to install PostgreSQL on CentOS:
@@ -215,7 +219,6 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
           state: started
         when: ansible_distribution == 'CentOS'
     ```
-
 ### 20. Run Ansible Playbook
 - Run the PostgreSQL playbook (or other playbooks):
   ```shell
