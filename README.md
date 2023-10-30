@@ -199,14 +199,14 @@ ansible-playbook -i inventory.yaml playbook.yaml
       become: yes
       tasks:
         - name: Install PostgreSQL and EPEL Repository
-        yum:
-          name: "{{ item }}"
-          state: present
-        loop:
-          - epel-release
-          - postgresql-server
-          - postgresql-contrib
-        when: ansible_distribution == 'CentOS'
+          yum:
+            name: "{{ item }}"
+            state: present
+          loop:
+            - epel-release
+            - postgresql-server
+            - postgresql-contrib
+          when: ansible_distribution == 'CentOS'
 
       - name: Initialize the PostgreSQL Database
         command: postgresql-setup initdb
