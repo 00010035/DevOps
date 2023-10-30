@@ -188,4 +188,3 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
   ```
 
 That's it! You've successfully set up Ansible and performed various configurations on your servers.
-```
