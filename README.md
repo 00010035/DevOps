@@ -134,6 +134,7 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
 - Inside the `ansible@ansible` user, copy your SSH key to the remote server:
   ```shell
   ssh-copy-id ansible@172.31.102.110
+  ssh master
   ```
 
 ### 16. Create Ansible Inventory File
