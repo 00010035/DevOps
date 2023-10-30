@@ -186,7 +186,7 @@ In this guide, we'll set up Ansible on Ubuntu and configure our server, which wi
 ansible-playbook -i inventory.yaml playbook.yaml
 ```
 
-### 19. Install PostgreSQL (Example)
+### 20. Install PostgreSQL (Example)
 - Create a playbook to install PostgreSQL on CentOS:
   ```shell
   vi postgres.yaml
@@ -219,7 +219,7 @@ ansible-playbook -i inventory.yaml playbook.yaml
           state: started
         when: ansible_distribution == 'CentOS'
     ```
-### 20. Run Ansible Playbook
+### 21. Run Ansible Playbook
 - Run the PostgreSQL playbook (or other playbooks):
   ```shell
   ansible-playbook -i inventory.yaml postgres.yaml
