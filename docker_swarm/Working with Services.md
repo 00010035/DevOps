@@ -24,11 +24,17 @@ This guide covers essential Docker service commands for creating, inspecting, lo
 docker service create -d --name [NAME] \
 -p [HOST_PORT]:[CONTAINER_PORT] \
 --replicas [REPLICAS] \
-[IMAGE] [CMD]
+[IMAGE]
+
+
+docker service create -d --name my-web-service \
+-p 8080:80 \
+--replicas 3 \
+nginx:latest
 
 ### List Services:
 
-```bash
+
 docker service ls
 ```
 
