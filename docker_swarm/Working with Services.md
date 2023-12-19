@@ -99,3 +99,8 @@ docker service ps nginx_service
 ```bash
 docker service scale nginx_service=3
 ```
+### Check is it connected to worker's or not 
+
+```bash
+docker service ps --format "table {{.ID}}\t{{.Node}}\t{{.Name}}" nginx_service
+```
