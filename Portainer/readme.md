@@ -26,6 +26,4 @@ Once the installation is complete, you can log into your Portainer Server instan
 [https://localhost:9443](https://localhost:9443)
 
 Enjoy managing your Docker environment with Portainer!
-```
 
-This README provides clear and concise steps for setting up Portainer Server, including creating the necessary Docker volume, running the container, and logging into the server.
