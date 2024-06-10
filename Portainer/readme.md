@@ -1,4 +1,4 @@
-```markdown
+
 # Portainer Server Installation Guide
 
 Follow these steps to install and set up Portainer Server on your system.
