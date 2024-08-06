@@ -1,6 +1,6 @@
 ## Installation Guide
 
-### Step 1: No Need for Program Files
+### Step 1: Don't install in Program Files
 
 You don't need to install the program to `Program Files`. You can choose any location on your system for the installation.
 
