@@ -6,7 +6,7 @@ You don't need to install the program to `Program Files`. You can choose any loc
 
 ### Step 2: Locate the Executable File
 
-After the installation is complete, navigate to the installation directory. Here, you will find the executable file, for example, `HELLO.exe`.
+After the installation is complete, navigate to the installation directory (зайти в папку где установили программу). Here, you will find the executable file, for example, `HELLO.exe`.
 
 ### Step 3: Create a Batch File
 
