@@ -5,7 +5,7 @@ This guide details the installation and configuration of **Zabbix Agent 2** for 
 
 ### Key Differences Between Zabbix Agent and Agent 2
 - **Zabbix Agent:** Lightweight, suitable for traditional monitoring setups.
-- **Zabbix Agent 2:** Built with Go, supports additional plugins, ideal for modern workloads like Docker.
+- **Zabbix Agent 2:** Built with Go, supports additional plugins, ideal for modern workloads like **Docker**.
 
 ## Installing Zabbix Agent 2
 
